@@ -1997,6 +1997,10 @@
          } else {
              this.$body.toggleClass('menu-pin');
          }
+         if($('body').hasClass('menu-pin'))
+        {
+            this.$element.css({left:'-'+this.sideBarWidthCondensed+'px'});
+        }
 
      }
 
