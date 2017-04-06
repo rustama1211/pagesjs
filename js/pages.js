@@ -1964,13 +1964,18 @@
      }
 
 
-     // Toggle sidebar for mobile view   
+      // Toggle sidebar for mobile view   
      Sidebar.prototype.toggleSidebar = function(toggle) {
          var timer;
          var bodyColor = $('body').css('background-color');
          $('.page-container').css('background-color', bodyColor);
          if (this.$body.hasClass('sidebar-open')) {
              this.$body.removeClass('sidebar-open');
+             //remove css translate if _this.cssAnimation = true bug fix
+             if(_this.cssAnimation)
+             {
+                _this.$element.css({'transform':''});
+             }
              timer = setTimeout(function() {
                  this.$element.removeClass('visible');
              }.bind(this), 400);
@@ -2000,6 +2005,13 @@
          if($('body').hasClass('menu-pin'))
         {
             this.$element.css({left:'-'+this.sideBarWidthCondensed+'px'});
+        }
+        else
+        {
+             if(this.cssAnimation)
+             {
+                this.$element.css({'transform':''});
+             }
         }
 
      }
