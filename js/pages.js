@@ -1963,7 +1963,7 @@
 
      }
 
-
+ 
       // Toggle sidebar for mobile view   
      Sidebar.prototype.toggleSidebar = function(toggle) {
          var timer;
@@ -1972,9 +1972,9 @@
          if (this.$body.hasClass('sidebar-open')) {
              this.$body.removeClass('sidebar-open');
              //remove css translate if _this.cssAnimation = true bug fix
-             if(_this.cssAnimation)
+             if(this.cssAnimation)
              {
-                _this.$element.css({'transform':''});
+                this.$element.css({'transform':''});
              }
              timer = setTimeout(function() {
                  this.$element.removeClass('visible');
@@ -2002,16 +2002,22 @@
          } else {
              this.$body.toggleClass('menu-pin');
          }
+   
          if($('body').hasClass('menu-pin'))
         {
             this.$element.css({left:'-'+this.sideBarWidthCondensed+'px'});
         }
         else
-        {
+        {   
+             this.$body.removeClass('sidebar-visible');
              if(this.cssAnimation)
              {
-                this.$element.css({'transform':''});
+                this.$element.css({'transform':' translate3d(0px, 0px, 0px)'});
              }
+
+
+
+             //this.$element.trigger('mouseleave');
         }
 
      }
