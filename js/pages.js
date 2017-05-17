@@ -128,6 +128,12 @@
         var color = colorElem.css('background-color');
 
         var rgb = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+         //this is rgba exception
+        if(!rgb)
+        {
+            rgb = color.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d+)\)$/);
+            opacity = rgb[4];
+        }
         var rgba = "rgba(" + rgb[1] + ", " + rgb[2] + ", " + rgb[3] + ', ' + opacity + ')';
 
         return rgba;
