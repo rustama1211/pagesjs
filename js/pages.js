@@ -2072,14 +2072,26 @@
      })
      if(Modernizr && Modernizr.passiveeventlisteners)
      {
+       
         document.addEventListener('touchstart', function(e){
-          
              if ( $(e.target).attr('data-toggle') == 'sidebar' || $(e.target).parent().attr('data-toggle') == 'sidebar' ) {
                  e.preventDefault();
                  //var $this = $(e.target);
                  var $target = $('[data-pages="sidebar"]');
                  $target.data('pg.sidebar').toggleSidebar();
-                 console.log('aneh passive')
+                 //console.log('aneh passive')
+                 return false
+             }
+            
+        },{passive: false}); 
+
+        document.addEventListener('click', function(e){
+             if ( $(e.target).attr('data-toggle') == 'sidebar' || $(e.target).parent().attr('data-toggle') == 'sidebar' ) {
+                 e.preventDefault();
+                 //var $this = $(e.target);
+                 var $target = $('[data-pages="sidebar"]');
+                 $target.data('pg.sidebar').toggleSidebar();
+                 //console.log('aneh passive')
                  return false
              }
             
@@ -2087,7 +2099,8 @@
      }
      else
      {
-         $(document).on('click.pg.sidebar.data-api touchstart', '[data-toggle="sidebar"]', function(e) {
+        
+         $(document).on('click.pg.sidebar.data-api click touchstart', '[data-toggle="sidebar"]', function(e) {
              e.preventDefault();
              //var $this = $(this);
              var $target = $('[data-pages="sidebar"]');
