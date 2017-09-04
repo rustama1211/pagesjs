@@ -1828,8 +1828,8 @@
          this.cssAnimation = true;
          this.css3d = true;
 
-         this.sideBarWidth = 280;
-         this.sideBarWidthCondensed = 280 - 70;
+         this.sideBarWidth = 320;
+         this.sideBarWidthCondensed = 320 - 70;
 
          
 
